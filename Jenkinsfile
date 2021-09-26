@@ -45,7 +45,7 @@ pipeline {
 			}
 		}
 
-		stage('package') {
+		/*stage('package') {
 			steps {
 			
      	        sh "mvn package -DskipTests"
@@ -76,7 +76,7 @@ pipeline {
 				   }
 			   }
 			}
-		}
+		}*/
 	} 
 	post {
 		always {
