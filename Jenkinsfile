@@ -7,7 +7,7 @@ pipeline {
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-		DOCKERHUB_CREDENTIALS = credentials('dockehub')
+		DOCKERHUB_CREDENTIALS = credentials('dockerhub')
 	}
 
 	stages{
