@@ -7,6 +7,7 @@ pipeline {
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+		DOCKERHUB_CREDENTIALS = credentials('dockehub')
 	}
 
 	stages{
@@ -61,13 +62,24 @@ pipeline {
 		stage('Build Docker Image') {
 			steps {
 				//docker build -t skps27/currency-exchange-devops:$env.BUILD_TAG
-				script {
+				/*script {
 					dockerImage = docker.build("skps27/currency-exchange-devops:${env.BUILD_TAG}")
-				}
+				}*/
+				sh 'docker build -t skps27/currency-exchange-devops:0.0.1'
 				
 			}
 		}
-		stage('Push Docker Image') {
+        stage('login') {
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+		stage('Push') {
+			steps {
+				sh 'docker push skps27/currency-exchange-devops:0.0.1'
+			}
+		}
+		/*stage('Push Docker Image') {
 			steps {
 			   script {
 				   docker.withRegistry('', 'dockerhub') {
@@ -76,7 +88,7 @@ pipeline {
 				   }
 			   }
 			}
-		}
+		}*/
 
 		/*stage('Push Docker Imnage') { 
 
@@ -101,6 +113,7 @@ pipeline {
 	} 
 	post {
 		always {
+			sh 'docker logout'
 			echo 'Iam awsome. I run always'
 		}
 		success {
