@@ -62,23 +62,23 @@ pipeline {
 		stage('Build Docker Image') {
 			steps {
 				//docker build -t skps27/currency-exchange-devops:$env.BUILD_TAG
-				/*script {
-					dockerImage = docker.build("skps27/currency-exchange-devops:${env.BUILD_TAG}")
-				}*/
+				// script {
+				// 	dockerImage = docker.build("skps27/currency-exchange-devops:${env.BUILD_TAG}")
+				// }
 				sh 'docker build -t skps27/currency-exchange-devops:0.0.1'
-				
 			}
 		}
-        stage('login') {
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-		stage('Push') {
-			steps {
-				sh 'docker push skps27/currency-exchange-devops:0.0.1'
-			}
-		}
+
+		stage('login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('Push') {
+            steps {
+                sh 'docker push skps27/currency-exchange-devops:0.0.1'
+            }
+        }
 		/*stage('Push Docker Image') {
 			steps {
 			   script {
@@ -88,9 +88,9 @@ pipeline {
 				   }
 			   }
 			}
-		}*/
+		}
 
-		/*stage('Push Docker Imnage') { 
+		/tage('Push Docker Imnage') { 
 
             steps { 
 
