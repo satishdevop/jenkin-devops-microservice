@@ -67,7 +67,7 @@ pipeline {
 				
 			}
 		}
-		stage('Push Docker Image') {
+		/*stage('Push Docker Image') {
 			steps {
 			   script {
 				   docker.withRegistry('', 'dockerhub') {
@@ -77,6 +77,27 @@ pipeline {
 			   }
 			}
 		}
+
+		stage('Deploy our image') { 
+22
+            steps { 
+23
+                script { 
+24
+                    docker.withRegistry( '', 'dockerhub') { 
+25
+                        dockerImage.push() 
+26
+                    }
+27
+                } 
+28
+            }
+29
+        } */
+
+
+
 	} 
 	post {
 		always {
