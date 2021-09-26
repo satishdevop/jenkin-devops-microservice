@@ -62,10 +62,10 @@ pipeline {
 		stage('Build Docker Image') {
 			steps {
 				//docker build -t skps27/currency-exchange-devops:$env.BUILD_TAG
-				// script {
-				// 	dockerImage = docker.build("skps27/currency-exchange-devops:${env.BUILD_TAG}")
-				// }
-				sh 'docker build -t skps27/currency-exchange-devops:0.0.1'
+				script {
+				 	dockerImage = docker.build("skps27/currency-exchange-devops:0.0.1")
+				 }
+				//sh 'docker build -t skps27/currency-exchange-devops:0.0.1'
 			}
 		}
 
