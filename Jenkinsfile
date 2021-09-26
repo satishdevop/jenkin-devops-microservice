@@ -76,7 +76,7 @@ pipeline {
 				   }
 			   }
 			}
-		}
+		}*/
 
 		stage('Deploy our image') { 
 22
@@ -94,7 +94,7 @@ pipeline {
 28
             }
 29
-        } */
+        } 
 
 
 
