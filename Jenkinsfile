@@ -45,7 +45,7 @@ pipeline {
 			}
 		}
 
-		/*stage('package') {
+		stage('package') {
 			steps {
 			
      	        sh "mvn package -DskipTests"
@@ -70,13 +70,13 @@ pipeline {
 		stage('Push Docker Image') {
 			steps {
 			   script {
-				   docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+				   docker.withRegistry('', 'dockerhub') {
 				   dockerImage.push();
 				   dockerImage.push('latest');
 				   }
 			   }
 			}
-		}*/
+		}
 	} 
 	post {
 		always {
