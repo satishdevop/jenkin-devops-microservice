@@ -14,6 +14,11 @@ pipeline {
 				echo "test"
 			}
 		}
+		stage('Test') {
+			steps {
+				echo "test"
+			}
+		}
 	}
         
 	}
