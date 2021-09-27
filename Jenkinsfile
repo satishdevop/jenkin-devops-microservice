@@ -2,6 +2,9 @@ pipeline {
 	agent any
 	//agent { docker { image 'maven:3-openjdk-11'} }
 	//agent { docker { image 'node:current-alpine3.11'} }
+	options {
+		buildDiscarder(logRotator(numToKeepStr: '5'))
+	}
 
 	environment {
 		dockerHome = tool 'myDocker'
